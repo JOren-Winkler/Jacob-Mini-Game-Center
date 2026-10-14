@@ -1,27 +1,34 @@
-import java.util.scanner;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner (System.in);
         System.out.println("Hello!");
         System.out.println("Welcome to the game center!");
+        int gameChoice;
         int x = 2;
-        while (x=2){
-            System.out.println("Which game? BJ or WOF? ('1' or '2'. Or '3' to exit.)");
+        while (x==2){
+            System.out.println("Which game? Type '1' for Blackjack, '2' for Wheel of Fortune, or '3' to exit.");
             gameChoice = input.nextInt();
-            if (gameChoice == 1){
-                blackjack.playedBJ();
+            if (gameChoice >= 1 && gameChoice <= 3){
+                if (gameChoice == 1){
+                    blackjack.playedBJ();
+                }
+                else if (gameChoice == 2){
+                    wheel_of_fortune.playedWOF();
+                }
+                else {
+                    System.out.println ("Goodbye!");
+                    break;
+                }
             }
-            else if (gameChoice == 1){
-                wheel_of_fortune.playedWOF();
+            else {
+                System.out.println("Please enter a valid input");
             }
-            else if (gameChoice == 3){
-                System.out.println ("Goodbye!");
-                break;
             }
         }
     }
-}
+
 
 // ☐  In main, print a menu with numbered options.
 // ☐  Read the user's choice with Scanner.
