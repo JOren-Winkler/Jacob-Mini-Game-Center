@@ -1,4 +1,4 @@
-public class wheel_of_fortune {
+public class wheelOfFortune {
     public static void playedWOF(){
         System.out.println("You have played Wheel of Fortune.");
     }
