@@ -1,9 +1,26 @@
+import java.util.Scanner;
 public class blackjack {
     public static void playedBJ(){
-        // card1 = new card();
+        Scanner input = new Scanner(System.in);
+        int card1 = pullCardValue();
+        int card2 = pullCardValue();
+        int result = card1 + card2;
+        System.out.println("You have drawn card values " + card1 + " and " + card2 + ", totaling " + result);
+        System.out.println("Would you like to hit or stand? (type a or b)");
+        String hitStand = input.nextLine();
         System.out.println("You have played Blackjack.");
     }
+    
+    
+    
+    
+    
+    public static int pullCardValue() {
+            return ((int)(Math.random()*(11) + 1));
+        }
 }
+
+
 
 class card {
     
