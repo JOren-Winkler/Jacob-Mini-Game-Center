@@ -4,10 +4,42 @@ public class blackjack {
         Scanner input = new Scanner(System.in);
         int card1 = pullCardValue();
         int card2 = pullCardValue();
-        int result = card1 + card2;
-        System.out.println("You have drawn card values " + card1 + " and " + card2 + ", totaling " + result);
-        System.out.println("Would you like to hit or stand? (type a or b)");
-        String hitStand = input.nextLine();
+        int total = card1 + card2;
+        System.out.println("You have drawn card values " + card1 + " and " + card2 + ", totaling " + total);
+        while (true) {
+            System.out.println("Would you like to hit or stand? (type a or b)");
+            String hitStand = input.nextLine();
+            if (hitStand.equals("a")){
+                int drawnCard = pullCardValue();
+                total+= drawnCard;
+                System.out.println("You have drawn a value of " + drawnCard);
+                System.out.println("Your total is now " + total);
+                if (total>21){
+                    System.out.println("Bust! You lose :(");
+                    break;
+                }
+            }
+            else if (hitStand.equals("b")){
+                int dealerCard = dealerDraw();
+                System.out.println("You have chosen to stand.");
+                System.out.println("The dealer drew a " + dealerCard);
+                if (total < dealerCard){
+                    System.out.println("The dealer beat you. You lose. :(");
+                    break;
+                }
+                else if (total > dealerCard){
+                    System.out.println("You beat the dealer. You win! :)");
+                    break;
+                }
+                else if (total == dealerCard){
+                    System.out.println("You tied with the dealer. You'll get your money back");
+                    break;
+                }
+            }
+            else {
+                System.out.println("Invalid input.");
+            }
+        }
         System.out.println("You have played Blackjack.");
     }
     
@@ -16,14 +48,12 @@ public class blackjack {
     
     
     public static int pullCardValue() {
-            return ((int)(Math.random()*(11) + 1));
+            return ((int)(Math.random()*(10) + 1));
         }
-}
 
-
-
-class card {
-    
+    public static int dealerDraw() {
+            return ((int)(Math.random()*(5) + 17));
+        }
 }
 
 // import java.util.ArrayList;
